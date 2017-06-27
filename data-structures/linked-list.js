@@ -11,6 +11,17 @@ function LinkedList ( ) {
 
 LinkedList.prototype = {
 
+	print: function () {
+		let current = this.head;
+		const array = [];
+		while ( current ) {
+			array.push( current.value );
+			current = current.next;
+		}
+		array.push('null');
+		return array.join(' -> ');
+	},
+
 	append: function ( newVal ) {
 		const node = new Node(newVal);
 		// if the linked list is empty
@@ -79,7 +90,23 @@ LinkedList.prototype = {
 				current = current.next;
 			}
 		}
-		// if the index is greater than the linked list's size (ie we never find the index) then return the list as it is 
+		// if the index is greater than the linked list's size (ie we never find the index) then return the list as it is
+		return this;
+	},
+
+	removeDuplicates: function () {
+		const values = [ this.head.value ];
+		let previous = this.head;
+		let current = this.head.next;
+		while ( current ) {
+			if ( values.includes( current.value )) {
+				previous.next = current.next;
+			} else {
+				values.push( current.value );
+				previous = previous.next;
+			}
+			current = current.next;
+		}
 		return this;
 	}
 };
