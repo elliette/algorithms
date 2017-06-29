@@ -66,7 +66,7 @@ LinkedList.prototype = {
 		return this;
 	},
 
-	splice: function( index ) {
+	splice: function ( index ) {
 		// if we are deleting the head from a linked list with only one node
 		if ( !index && !this.head.next ) {
 			this.head = null;
@@ -110,3 +110,23 @@ LinkedList.prototype = {
 		return this;
 	}
 };
+
+// implement an algorithm to find the nth to last element in a singly linked list
+function nthToLast (list) {
+	// if linked list is only one node return -1
+	if ( !list.head.next ) {
+		return -1;
+	}
+	// otherwise, keep track of previous (starting with head) and current node
+	// if current node's next is null, return the previous
+	let previous = list.head;
+	let current = list.head.next;
+
+	while ( current ) {
+		if ( !current.next ) {
+			return previous;
+		}
+		previous = previous.next;
+		current = current.next;
+	}
+}
