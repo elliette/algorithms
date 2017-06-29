@@ -130,3 +130,31 @@ function nthToLast (list) {
 		current = current.next;
 	}
 }
+
+/*
+Given a circular linked list, implement an algorithm which returns node at the begin- ning of the loop
+DEFINITION
+Circular linked list: A (corrupt) linked list in which a node’s next pointer points to an earlier node, so as to make a loop in the linked list
+EXAMPLE
+input: A -> B -> C -> D -> E -> C [the same C as earlier]
+output: C
+*/
+
+function findLoop ( list ) { // possible solution - not quite sure how to test
+	const visited = {};
+	let current = this.head;
+	while ( current ) {
+		if ( visited.hasOwnProperty( current.value ) ) {
+			if ( visited[current.value].includes( current.next ) ) {
+				return current;
+			} else {
+				visited.push(current.next);
+			}
+		} else {
+			visited[current.value] = [];
+			visited.push(current.next);
+		}
+	current = current.next;
+	}
+	return -1;
+}
