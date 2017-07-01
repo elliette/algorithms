@@ -1,6 +1,8 @@
 /*
 =============================================================
-Implement a maybe factory or constructor. This function should return values implementing the "Maybe" API. For the purpose of this REACTO, that means Maybes need value and map methods.
+Problem: Maybe Monad
+
+Implement a maybe factory or constructor. This function should return values implementing the "Maybe" API. For the purpose of this problem, that means Maybes need value and map methods.
 
 A Maybe's value returns the value held by the Maybe.
 
